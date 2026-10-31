@@ -8,7 +8,8 @@ import {
   LogOut,
   User as UserIcon,
   Cpu,
-  RefreshCw
+  RefreshCw,
+  Search
 } from 'lucide-react';
 import { User, AlertItem } from '../types';
 
@@ -17,6 +18,7 @@ interface TopHeaderProps {
   onOpenFaultModal: () => void;
   onOpenLogin: () => void;
   onLogout: () => void;
+  onOpenCommandPalette: () => void;
   currentUser: User | null;
   alerts: AlertItem[];
   activeFault: string | null;
@@ -28,6 +30,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   onOpenFaultModal,
   onOpenLogin,
   onLogout,
+  onOpenCommandPalette,
   currentUser,
   alerts,
   activeFault,
@@ -50,7 +53,8 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   const viewTitles: Record<string, string> = {
     dashboard: 'Command Center',
     monitoring: 'Infrastructure Telemetry',
-    services: 'Service Inventory & Topology',
+    topology: 'Infrastructure Topology Mesh',
+    services: 'Service Inventory & Catalog',
     anomalies: 'Anomaly Intelligence',
     predictions: 'Predictive Failure Analysis',
     rca: 'Root Cause Analysis Workbench',
@@ -83,11 +87,43 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
       top: 0,
       zIndex: 40
     }}>
-      {/* Breadcrumb Title */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px' }}>
-        <span style={{ color: 'var(--text-dim)', fontWeight: 500 }}>PHOENIX</span>
-        <span style={{ color: 'var(--border-medium)' }}>/</span>
-        <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{viewTitles[currentView] || currentView}</span>
+      {/* Breadcrumb Title & Quick Search Trigger */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px' }}>
+          <span style={{ color: 'var(--text-dim)', fontWeight: 500 }}>PHOENIX</span>
+          <span style={{ color: 'var(--border-medium)' }}>/</span>
+          <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{viewTitles[currentView] || currentView}</span>
+        </div>
+
+        {/* Command Palette Trigger Button */}
+        <button
+          onClick={onOpenCommandPalette}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'var(--bg-surface-2)',
+            border: '1px solid var(--border-subtle)',
+            borderRadius: '6px',
+            padding: '4px 10px',
+            color: 'var(--text-muted)',
+            cursor: 'pointer',
+            fontSize: '12px'
+          }}
+          title="Quick search and command runner (Ctrl+K)"
+        >
+          <Search size={13} color="var(--cyan-main)" />
+          <span>Quick actions & search...</span>
+          <span style={{
+            fontSize: '10px',
+            fontFamily: 'var(--font-mono)',
+            background: 'var(--bg-surface-3)',
+            padding: '1px 5px',
+            borderRadius: '4px',
+            color: 'var(--text-dim)',
+            border: '1px solid var(--border-subtle)'
+          }}>Ctrl+K</span>
+        </button>
       </div>
 
       {/* Right Action Toolbar */}
@@ -284,3 +320,4 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
     </header>
   );
 };
+

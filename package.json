@@ -1,0 +1,23 @@
+{
+  "name": "phoenix-infrastructure-platform",
+  "version": "2.0.0",
+  "description": "PHOENIX — Autonomous Self-Healing Digital Infrastructure",
+  "private": true,
+  "scripts": {
+    "dev": "python scripts/dev.py",
+    "build": "npm run build --prefix frontend",
+    "test": "python -m pytest",
+    "install:all": "npm --prefix frontend install"
+  },
+  "keywords": [
+    "autonomous",
+    "self-healing",
+    "observability",
+    "reliability",
+    "ai-ops",
+    "incident-intelligence"
+  ],
+  "author": "PHOENIX Infrastructure Systems",
+  "license": "Apache-2.0"
+}
+

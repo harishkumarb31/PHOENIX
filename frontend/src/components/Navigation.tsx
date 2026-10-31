@@ -18,7 +18,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Radio,
-  Zap
+  Zap,
+  Network
 } from 'lucide-react';
 import { User } from '../types';
 
@@ -47,6 +48,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       items: [
         { id: 'dashboard', label: 'Command Center', icon: LayoutDashboard },
         { id: 'monitoring', label: 'Infrastructure Monitoring', icon: Activity },
+        { id: 'topology', label: 'Infrastructure Topology', icon: Network },
         { id: 'services', label: 'Service Inventory', icon: Server }
       ]
     },
@@ -296,3 +298,4 @@ export const Navigation: React.FC<NavigationProps> = ({
     </aside>
   );
 };
+

@@ -100,6 +100,33 @@ export const api = {
     return res.json();
   },
 
+  async restartService(serviceId: number): Promise<any> {
+    const res = await fetch(`${API_BASE}/services/${serviceId}/restart`, {
+      method: 'POST',
+      headers: { ...getAuthHeader() }
+    });
+    if (!res.ok) throw new Error('Failed to restart service');
+    return res.json();
+  },
+
+  async isolateService(serviceId: number): Promise<any> {
+    const res = await fetch(`${API_BASE}/services/${serviceId}/isolate`, {
+      method: 'POST',
+      headers: { ...getAuthHeader() }
+    });
+    if (!res.ok) throw new Error('Failed to isolate service');
+    return res.json();
+  },
+
+  async recoverService(serviceId: number): Promise<any> {
+    const res = await fetch(`${API_BASE}/services/${serviceId}/recover`, {
+      method: 'POST',
+      headers: { ...getAuthHeader() }
+    });
+    if (!res.ok) throw new Error('Failed to recover service');
+    return res.json();
+  },
+
   // Anomalies
   async getAnomalies(limit = 50, suppressed = false): Promise<AnomalyItem[]> {
     const res = await fetch(`${API_BASE}/anomalies?limit=${limit}&suppressed=${suppressed}`);
@@ -277,3 +304,4 @@ export const api = {
     return res.json();
   }
 };
+

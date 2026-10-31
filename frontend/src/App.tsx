@@ -3,9 +3,11 @@ import { Navigation } from './components/Navigation';
 import { TopHeader } from './components/TopHeader';
 import { FaultModal } from './components/FaultModal';
 import { LoginModal } from './components/LoginModal';
+import { CommandPalette } from './components/CommandPalette';
 
 import { CommandCenterView } from './views/CommandCenterView';
 import { MonitoringView } from './views/MonitoringView';
+import { InfrastructureMapView } from './views/InfrastructureMapView';
 import { ServiceInventoryView } from './views/ServiceInventoryView';
 import { AnomalyIntelligenceView } from './views/AnomalyIntelligenceView';
 import { FailurePredictionView } from './views/FailurePredictionView';
@@ -39,6 +41,19 @@ export function App() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
   const [faultModalOpen, setFaultModalOpen] = useState<boolean>(false);
   const [loginModalOpen, setLoginModalOpen] = useState<boolean>(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState<boolean>(false);
+
+  // Global Ctrl+K / Cmd+K Command Palette Trigger
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setCommandPaletteOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Core Data States
   const [overview, setOverview] = useState<DashboardOverview | null>(null);
@@ -188,6 +203,7 @@ export function App() {
           onOpenFaultModal={() => setFaultModalOpen(true)}
           onOpenLogin={() => setLoginModalOpen(true)}
           onLogout={handleLogout}
+          onOpenCommandPalette={() => setCommandPaletteOpen(true)}
           currentUser={currentUser}
           alerts={alerts}
           activeFault={overview?.active_fault || null}
@@ -210,6 +226,15 @@ export function App() {
               metrics={metrics}
               services={services}
               hostMetrics={overview?.host_metrics || {}}
+            />
+          )}
+
+          {currentView === 'topology' && (
+            <InfrastructureMapView
+              services={services}
+              dependencies={dependencies}
+              onRefresh={refreshAllData}
+              onSimulateFault={() => setFaultModalOpen(true)}
             />
           )}
 
@@ -317,6 +342,16 @@ export function App() {
           setCurrentUser(user);
           refreshAllData();
         }}
+      />
+
+      {/* Global Command Palette (Ctrl+K) */}
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
+        onNavigate={setCurrentView}
+        onSimulateFault={() => setFaultModalOpen(true)}
+        services={services}
+        incidents={incidents}
       />
     </div>
   );

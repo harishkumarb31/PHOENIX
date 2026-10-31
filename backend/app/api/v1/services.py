@@ -87,3 +87,38 @@ def delete_service(service_id: int, db: Session = Depends(get_db)):
     db.delete(svc)
     db.commit()
     return {"message": f"Service {svc.name} deleted successfully"}
+
+@router.post("/{service_id}/restart")
+def restart_service(service_id: int, db: Session = Depends(get_db)):
+    svc = db.query(Service).filter(Service.id == service_id).first()
+    if not svc:
+        raise HTTPException(status_code=404, detail="Service not found")
+    svc.status = "healthy"
+    svc.health_score = 99.5
+    svc.error_rate = 0.001
+    svc.latency = 42.0
+    svc.cpu = 25.0
+    svc.memory = 32.0
+    db.commit()
+    return {"message": f"Service {svc.name} successfully restarted and operational telemetry re-stabilized."}
+
+@router.post("/{service_id}/isolate")
+def isolate_service(service_id: int, db: Session = Depends(get_db)):
+    svc = db.query(Service).filter(Service.id == service_id).first()
+    if not svc:
+        raise HTTPException(status_code=404, detail="Service not found")
+    svc.status = "isolated"
+    svc.health_score = 45.0
+    db.commit()
+    return {"message": f"Service {svc.name} has been isolated from ingress traffic routing."}
+
+@router.post("/{service_id}/recover")
+def recover_service(service_id: int, db: Session = Depends(get_db)):
+    svc = db.query(Service).filter(Service.id == service_id).first()
+    if not svc:
+        raise HTTPException(status_code=404, detail="Service not found")
+    svc.status = "healthy"
+    svc.health_score = 98.5
+    svc.error_rate = 0.001
+    db.commit()
+    return {"message": f"Service {svc.name} restored to healthy production pool."}
