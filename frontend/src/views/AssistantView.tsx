@@ -199,3 +199,4 @@ export const AssistantView: React.FC = () => {
     </div>
   );
 };
+

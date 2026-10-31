@@ -226,3 +226,4 @@ export const RecoveryIntelligenceView: React.FC<RecoveryIntelligenceViewProps> =
     </div>
   );
 };
+

@@ -83,3 +83,4 @@ class TelemetryControlRequest(BaseModel):
 # Assistant
 class AssistantQueryRequest(BaseModel):
     query: str
+

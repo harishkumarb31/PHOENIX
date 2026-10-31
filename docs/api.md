@@ -68,3 +68,4 @@
 
 ## 15. WebSockets
 - `ws://localhost:8000/ws/telemetry`: Real-time streaming connection pushing telemetry ticks every 3s.
+

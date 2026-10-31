@@ -35,3 +35,4 @@ class Alert(Base):
     acknowledged_by = Column(String(64), nullable=True)
     acknowledged_at = Column(DateTime, nullable=True)
     resolved_at = Column(DateTime, nullable=True)
+

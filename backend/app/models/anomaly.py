@@ -24,3 +24,4 @@ class AnomalyRecord(Base):
     explanation = Column(Text, nullable=False)
     is_suppressed = Column(Boolean, default=False)
     incident_id = Column(Integer, nullable=True, index=True)
+

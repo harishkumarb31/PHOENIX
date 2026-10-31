@@ -50,3 +50,4 @@ class RootCauseHypothesis(Base):
     created_at = Column(DateTime, default=now_utc)
 
     incident = relationship("Incident", back_populates="hypotheses")
+

@@ -212,3 +212,4 @@ export const FailurePredictionView: React.FC<FailurePredictionViewProps> = ({
     </div>
   );
 };
+

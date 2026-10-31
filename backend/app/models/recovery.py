@@ -79,3 +79,4 @@ class RecoveryVerification(Base):
     verified_at = Column(DateTime, default=now_utc)
     
     execution = relationship("RecoveryExecution", back_populates="verifications")
+

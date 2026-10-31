@@ -265,3 +265,4 @@ export const MonitoringView: React.FC<MonitoringViewProps> = ({
     </div>
   );
 };
+

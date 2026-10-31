@@ -17,3 +17,4 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=now_utc)
     last_login = Column(DateTime, nullable=True)
+

@@ -63,3 +63,4 @@ class ServiceDependency(Base):
 
     source_service = relationship("Service", foreign_keys=[source_service_id], back_populates="outgoing_dependencies")
     target_service = relationship("Service", foreign_keys=[target_service_id], back_populates="incoming_dependencies")
+

@@ -141,3 +141,4 @@ class TelemetryWorker:
             await asyncio.sleep(3.0)
 
 telemetry_worker = TelemetryWorker()
+

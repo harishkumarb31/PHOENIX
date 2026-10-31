@@ -178,3 +178,4 @@ export const AnomalyIntelligenceView: React.FC<AnomalyIntelligenceViewProps> = (
     </div>
   );
 };
+

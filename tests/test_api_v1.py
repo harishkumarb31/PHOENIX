@@ -113,3 +113,4 @@ def test_audit_logs():
     res = client.get("/api/v1/audit")
     assert res.status_code == 200
     assert isinstance(res.json(), list)
+

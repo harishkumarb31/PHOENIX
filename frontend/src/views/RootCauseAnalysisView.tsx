@@ -202,3 +202,4 @@ export const RootCauseAnalysisView: React.FC<RootCauseAnalysisViewProps> = ({
     </div>
   );
 };
+

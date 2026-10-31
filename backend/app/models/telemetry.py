@@ -28,3 +28,4 @@ class MetricSample(Base):
     __table_args__ = (
         Index("idx_service_ts", "service_name", "timestamp"),
     )
+

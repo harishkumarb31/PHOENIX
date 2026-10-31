@@ -16,3 +16,4 @@ class AuditLog(Base):
     target_resource = Column(String(128), default="")
     result = Column(String(32), default="success") # success, failed, denied
     metadata_json = Column(Text, default="{}")
+

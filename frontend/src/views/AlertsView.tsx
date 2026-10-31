@@ -102,3 +102,4 @@ export const AlertsView: React.FC<AlertsViewProps> = ({
     </div>
   );
 };
+

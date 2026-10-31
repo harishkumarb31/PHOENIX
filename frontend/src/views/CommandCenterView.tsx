@@ -418,3 +418,4 @@ export const CommandCenterView: React.FC<CommandCenterViewProps> = ({
     </div>
   );
 };
+

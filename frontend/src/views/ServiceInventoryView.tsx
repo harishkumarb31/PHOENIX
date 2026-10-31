@@ -214,3 +214,4 @@ export const ServiceInventoryView: React.FC<ServiceInventoryViewProps> = ({
     </div>
   );
 };
+

@@ -21,3 +21,4 @@ class PredictionRecord(Base):
     drivers_json = Column(Text, default="{}") # JSON representation of metric slopes and contributors
     is_ml_calibrated = Column(Boolean, default=False)
     explanation = Column(Text, default="")
+

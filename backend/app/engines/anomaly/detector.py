@@ -156,3 +156,4 @@ class AnomalyDetector:
         return [a for a in persisted if not a.is_suppressed]
 
 anomaly_detector = AnomalyDetector()
+

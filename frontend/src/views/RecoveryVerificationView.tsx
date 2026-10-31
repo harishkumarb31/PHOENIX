@@ -101,3 +101,4 @@ export const RecoveryVerificationView: React.FC = () => {
     </div>
   );
 };
+

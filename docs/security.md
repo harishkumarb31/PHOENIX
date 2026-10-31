@@ -31,3 +31,4 @@ All administrative and mutating API routes are enforced via backend dependencies
 - **Rollback Preparedness**: Every formulated recovery plan defines verified rollback steps.
 - **Telemetry Verification Gating**: Incidents cannot be marked resolved without quantitative proof that the affected metric vector returned within normal thresholds.
 - **Immutable Audit Logging**: Every login, fault injection, plan generation, approval, execution, and verification is permanently logged to `audit_logs`.
+

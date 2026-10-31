@@ -13,3 +13,4 @@ class SystemSetting(Base):
     value = Column(Text, nullable=False)
     description = Column(String(256), default="")
     updated_at = Column(DateTime, default=now_utc, onupdate=now_utc)
+

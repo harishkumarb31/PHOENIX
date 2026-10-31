@@ -55,3 +55,4 @@
 13. **alerts & alert_rules**: Notification events, thresholds, durations, acknowledgement tracking.
 14. **audit_logs**: Immutable system audit trail (actor, role, event type, target, result, JSON metadata).
 15. **system_settings**: Key-value operational configuration, polling intervals, and retention ceilings.
+

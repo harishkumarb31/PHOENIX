@@ -244,3 +244,4 @@ export interface DashboardOverview {
   active_fault: string | null;
   mode: string;
 }
+

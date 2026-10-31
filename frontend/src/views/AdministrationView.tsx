@@ -146,3 +146,4 @@ export const AdministrationView: React.FC<AdministrationViewProps> = ({
     </div>
   );
 };
+
